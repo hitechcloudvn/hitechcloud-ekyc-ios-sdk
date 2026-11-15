@@ -42,13 +42,13 @@ class IdCardDetectorVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //Restart session - Khởi tạo lại camera nếu đã tạm dừng camera trước đó
+        // Restart session - restart the camera if it was previously paused / Khởi tạo lại camera nếu đã tạm dừng camera trước đó
         self.camera?.restartSession()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //Tạm dừng session Camera - Nếu cần tạm dừng camera
+        // Pause camera session - pause the camera if needed / Tạm dừng session Camera - Nếu cần tạm dừng camera
         self.camera?.stopSession()
     }
     

@@ -52,13 +52,13 @@ class FaceDetectorVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //Restart session - Khởi tạo lại camera nếu đã tạm dừng camera trước đó
+        // Restart session - restart the camera if it was previously paused / Khởi tạo lại camera nếu đã tạm dừng camera trước đó
         self.camera?.restartSession()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //Tạm dừng session Camera - Nếu cần tạm dừng camera
+        // Pause camera session - pause the camera if needed / Tạm dừng session Camera - Nếu cần tạm dừng camera
         self.camera?.stopSession()
     }
     
@@ -98,8 +98,8 @@ extension FaceDetectorVC: HITECHCLOUDEKYCFaceDetectorDelegate {
             self.correctView.tintColor = valid ? UIColor.green : UIColor.red
         }
         if let imageResult = image, valid {
-            //Phương thức này sẽ vẫn được gọi mỗi lần nhận được được khuôn mặt
-            //Hãy gắn flag đánh dấu khi nhận được ảnh để tạm dừng không chạy block này tùy theo cách dùng
+            // This method is still called every time a face is received / Phương thức này sẽ vẫn được gọi mỗi lần nhận được được khuôn mặt
+            // Set a flag when an image is received to stop running this block as needed / Hãy gắn flag đánh dấu khi nhận được ảnh để tạm dừng không chạy block này tùy theo cách dùng
         }
     }
     
