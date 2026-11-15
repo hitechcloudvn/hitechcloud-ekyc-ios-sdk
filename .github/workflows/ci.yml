@@ -1,0 +1,31 @@
+# ===== HiTechCloud eKYC iOS SDK — CI =====
+# EN: Continuous integration — verify the bilingual documentation set.
+# VI: Tích hợp liên tục — xác minh bộ tài liệu song ngữ.
+# Repos: https://github.com/hitechcloudvn/hitechcloud-ekyc-ios-sdk · https://gitlab.com/hitechcloudvn/hitechcloud-ekyc-ios-sdk
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  docs:
+    name: Docs / Tài liệu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout / Tải mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Verify bilingual doc pairs / Xác minh cặp tài liệu song ngữ
+        run: |
+          missing=0
+          for f in README.md README.vi.md CHANGELOG.md CHANGELOG.vi.md; do
+            if [ ! -f "$f" ]; then
+              echo "missing: $f / thiếu: $f"
+              missing=1
+            fi
+          done
+          exit $missing
